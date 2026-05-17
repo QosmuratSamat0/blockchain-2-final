@@ -1,0 +1,76 @@
+type Pair @entity {
+  id: ID!
+  token0: Bytes!
+  token1: Bytes!
+  deterministic: Boolean!
+  createdAt: BigInt!
+  createdTx: Bytes!
+  swaps: [Swap!]! @derivedFrom(field: "pair")
+  liquidityEvents: [LiquidityEvent!]! @derivedFrom(field: "pair")
+}
+
+type Swap @entity {
+  id: ID!
+  pair: Pair!
+  sender: Bytes!
+  tokenIn: Bytes!
+  recipient: Bytes!
+  amountIn: BigInt!
+  amountOut: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+type LiquidityEvent @entity {
+  id: ID!
+  pair: Pair!
+  provider: Bytes!
+  recipient: Bytes!
+  action: String!
+  amount0: BigInt!
+  amount1: BigInt!
+  liquidity: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+type VaultPosition @entity {
+  id: ID!
+  owner: Bytes!
+  shares: BigInt!
+  assetsDeposited: BigInt!
+  assetsWithdrawn: BigInt!
+  updatedAt: BigInt!
+}
+
+type VaultActivity @entity {
+  id: ID!
+  owner: Bytes!
+  action: String!
+  assets: BigInt!
+  shares: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+type LoanPosition @entity {
+  id: ID!
+  account: Bytes!
+  collateral: BigInt!
+  debt: BigInt!
+  liquidations: BigInt!
+  updatedAt: BigInt!
+}
+
+type GovernanceProposal @entity {
+  id: ID!
+  proposer: Bytes!
+  description: String!
+  startBlock: BigInt!
+  endBlock: BigInt!
+  state: String!
+  forVotes: BigInt!
+  againstVotes: BigInt!
+  abstainVotes: BigInt!
+  createdAt: BigInt!
+}

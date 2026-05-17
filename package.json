@@ -1,0 +1,42 @@
+{
+  "name": "defi-superapp-capstone",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Option A capstone: AMM, lending pool, ERC-4626 vault, Chainlink oracle, DAO governance, subgraph, frontend, and L2 deployment scripts.",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "gas": "node scripts/runGasReport.js",
+    "slither": "slither . --filter-paths \"node_modules|artifacts|cache|coverage|src/security\" --exclude-low --exclude-informational --fail-medium",
+    "lint:sol": "solhint \"src/**/*.sol\" \"test/**/*.sol\"",
+    "lint": "npm run lint:sol && prettier --check .",
+    "fmt": "prettier --write .",
+    "local:setup": "hardhat run scripts/setupLocalFrontend.js --network localhost",
+    "frontend:serve": "node scripts/serveFrontend.js",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network arbitrumSepolia",
+    "deploy:optimism": "hardhat run scripts/deploy.js --network optimismSepolia",
+    "deploy:base": "hardhat run scripts/deploy.js --network baseSepolia",
+    "verify:post": "hardhat run scripts/postDeployCheck.js --network arbitrumSepolia",
+    "verify:post:optimism": "hardhat run scripts/postDeployCheck.js --network optimismSepolia",
+    "verify:post:base": "hardhat run scripts/postDeployCheck.js --network baseSepolia"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "2.0.8",
+    "@nomicfoundation/hardhat-ethers": "3.0.8",
+    "@nomicfoundation/hardhat-network-helpers": "1.0.12",
+    "@nomicfoundation/hardhat-verify": "2.0.8",
+    "@openzeppelin/contracts": "5.0.2",
+    "@openzeppelin/contracts-upgradeable": "5.0.2",
+    "@openzeppelin/hardhat-upgrades": "3.4.0",
+    "chai": "4.4.1",
+    "dotenv": "16.4.5",
+    "ethers": "6.13.2",
+    "hardhat": "2.22.19",
+    "hardhat-gas-reporter": "1.0.10",
+    "prettier": "3.2.5",
+    "prettier-plugin-solidity": "1.3.1",
+    "solhint": "5.0.3",
+    "solidity-coverage": "0.8.13"
+  }
+}

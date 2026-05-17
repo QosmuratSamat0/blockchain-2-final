@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile
+        run: npm run compile
+
+      - name: Test
+        run: npm test
+
+      - name: Coverage
+        run: npm run coverage
+
+      - name: Lint Solidity and formatting
+        run: npm run lint
+
+      - name: Slither
+        uses: crytic/slither-action@v0.4.0
+        with:
+          target: .
+          slither-args: --filter-paths "node_modules|artifacts|cache|coverage|src/security" --exclude-low --exclude-informational --fail-medium

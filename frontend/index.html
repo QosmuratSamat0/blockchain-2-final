@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeFi SuperApp</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+    <script src="./config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>DeFi SuperApp</h1>
+        <p id="networkLabel">Not connected</p>
+      </div>
+      <div class="actions">
+        <button id="switchNetworkButton" class="secondary" hidden>Switch Network</button>
+        <button id="connectButton">Connect Wallet</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel account-panel">
+        <h2>Account</h2>
+        <dl class="metrics">
+          <div>
+            <dt>Token Balance</dt>
+            <dd id="tokenBalance">-</dd>
+          </div>
+          <div>
+            <dt>Voting Power</dt>
+            <dd id="votingPower">-</dd>
+          </div>
+          <div>
+            <dt>Delegate</dt>
+            <dd id="delegateAddress">-</dd>
+          </div>
+          <div>
+            <dt>Pool Reserves</dt>
+            <dd id="poolReserves">-</dd>
+          </div>
+          <div>
+            <dt>Vault Shares</dt>
+            <dd id="vaultShares">-</dd>
+          </div>
+          <div>
+            <dt>Loan Position</dt>
+            <dd id="loanPosition">-</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="panel">
+        <h2>AMM</h2>
+        <div class="form-grid">
+          <label>
+            Amount In
+            <input id="swapAmount" inputmode="decimal" value="1" />
+          </label>
+          <label>
+            Min Out
+            <input id="minOut" inputmode="decimal" value="0" />
+          </label>
+          <button id="swapButton">Swap Token0</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Vault</h2>
+        <div class="form-grid">
+          <label>
+            Deposit
+            <input id="depositAmount" inputmode="decimal" value="100" />
+          </label>
+          <button id="depositButton">Deposit</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Governance</h2>
+        <div id="proposalList" class="proposal-list"></div>
+        <div class="form-grid">
+          <label>
+            Proposal ID
+            <input id="proposalId" />
+          </label>
+          <label>
+            Support
+            <select id="support">
+              <option value="1">For</option>
+              <option value="0">Against</option>
+              <option value="2">Abstain</option>
+            </select>
+          </label>
+          <button id="voteButton">Vote</button>
+        </div>
+      </section>
+
+      <section class="panel wide">
+        <h2>Indexed Activity</h2>
+        <div id="activityList" class="activity-list"></div>
+      </section>
+    </main>
+
+    <div id="status" class="status" role="status"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
