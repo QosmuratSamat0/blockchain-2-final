@@ -1165,14 +1165,13 @@ describe("Option A DeFi Super-App contracts", function () {
   });
 
   describe("fork-style mainnet integration tests", function () {
-    const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL;
+    const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || "https://ethereum-rpc.publicnode.com";
     const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
     const WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
     const UNISWAP_V2_FACTORY = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f";
     const ETH_USD_FEED = "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419";
 
     beforeEach(async function () {
-      if (!MAINNET_RPC_URL) this.skip();
       await reset(MAINNET_RPC_URL);
     });
 

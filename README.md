@@ -7,8 +7,8 @@ This submission is organized for an instructor-approved 4-person team. Ownership
 ## Current Status
 
 - Smart contracts compile with Hardhat.
-- `npm test` passes with 84 automated tests by default.
-- The test suite includes 10 deterministic fuzz-style tests, 5 invariant-style tests, and 3 optional fork-style mainnet integration tests enabled by `MAINNET_RPC_URL`.
+- `npm test` passes with 87 automated tests.
+- The test suite includes 10 deterministic fuzz-style tests, 5 invariant-style tests, and 3 fork-style mainnet integration tests.
 - `npm run coverage` reports 94.51% line coverage.
 - `npm run slither` reports 0 High/Medium findings for production scope.
 - UUPS V1 -> V2 treasury upgrade path is implemented and tested.
